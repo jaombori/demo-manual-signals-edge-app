@@ -1,0 +1,29 @@
+{
+  "name": "settings-overriding-demo.edge-app-qa",
+  "version": "0.1.0",
+  "description": "edge-app-qa",
+  "application-type": "iot",
+  "container-registry": "omborigridregistry.azurecr.io",
+  "license": "UNLICENSED",
+  "type": "module",
+  "private": true,
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "@ombori/ga-module": "^3.20.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@ombori/ts-schema": "^2.92.0",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "bootstrap": "echo init ok",
+    "schema": "mkdir -p build && npx ts-schema src/schema.ts build/",
+    "build": "mkdir -p build && tsc && yarn schema && touch build/index.html && omg app build",
+    "desc": "omg app upload-description",
+    "pub": "omg app publish",
+    "deploy": "omg module deploy"
+  }
+}
