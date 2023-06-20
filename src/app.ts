@@ -69,3 +69,74 @@ const signalsExample = async () => {
 };
 
 await signalsExample();
+
+// Definitions
+
+/*** Instance Props ***/
+// accessId: string;
+// accessToken: string;
+// lastActivity: string;
+// sessionId: string;
+// sessionCreated: string;
+// tenantId: string;
+// environment: string;
+// dataResidency: string;
+// country: string;
+// locationAccuracy?: number;
+// latitude?: number;
+// longitude?: number;
+// spaceId: string;
+// appId: string;
+// appVersion?: string;
+// installationId: string;
+// installationVersion?: string;
+// deviceId?: string | null;
+// clientId: string | null;
+// clientCreated: string | null;
+// clientUserAgent: string | null;
+// clientScreenWidth?: number;
+// clientScreenHeight?: number;
+// clientScreenColorDepth?: number;
+// clientScreenPixelDepth?: number;
+
+/*** Session Props (sendRawSession)***/
+// sessionId: string;
+// sessionCreated: string;
+// tenantId: string;
+// environment: string;
+// dataResidency: string;
+// country: string;
+// locationAccuracy?: number;
+// latitude?: number;
+// longitude?: number;
+// spaceId: string;
+// appId: string;
+// appVersion?: string;
+// installationId: string;
+// installationVersion?: string;
+// deviceId?: string | null;
+// clientId: string | null;
+
+/*** Event Props (sendRawEvent)***/
+// tenantId: string;
+// eventTime: string;
+// dataResidency: string;
+// sessionId: string;
+// clientId: string | null;
+// spaceId: string;
+// eventType: string;
+// interaction: boolean;
+// productId?: string;
+// categoryId?: string;
+// int1?: number;
+// int2?: number;
+// int3?: number;
+// int4?: number;
+// int5?: number;
+// str1?: string;
+// str2?: string;
+// str3?: string;
+// str4?: string;
+// str5?: string;
+// stateful?: boolean;
+// public?: number;
