@@ -1,5 +1,5 @@
-# {{applicationName}} #
-by {{author}}
+# edge-app-qa #
+by Settings Overriding Demo
 
 A short description will be displayed in application list.
 

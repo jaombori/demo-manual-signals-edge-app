@@ -1,4 +1,5 @@
 import { connect, signals } from '@ombori/ga-module';
+import { GridSignals } from '@ombori/grid-signals';
 
 import { Settings } from './schema.js';
 
@@ -7,34 +8,64 @@ import { Settings } from './schema.js';
 // TODO: Update 'container-registry' field in package.json with your container registry hostname
 // TODO: Create .env file with <your-registry>_USERNAME and <your-registry>_PASSWORD values
 
-const module = await connect<Settings>();
+const module = await connect<Settings>({ skipGridSignalsInit: true });
 
-// Sample Grid Signals event
-// See more: https://developer.omborigrid.com/#/grid-signals/edge-modules-integration
-await signals.detectMood({ mood: 'HAPPY', certainty: 90 });
+const signalsExample = async () => {
+  const signalsInstance = new GridSignals();
 
-// TODO: insert your code here
+  // This just initialize the instance by getting the signals parameters from the process.env
+  // Here you can override the 
+  signalsInstance.initEdgeApp();
 
-// Example of settings handling
-console.log(`testSetting value is ${module.settings.testSetting}`);
-module.onSettings(settings => {
-  console.log('settings updated:', settings)
-});
+  // manually generate a sessionId without sending a session to signals service
+  const { sessionId, sessionCreated } = signals.generateSession();
+  // manually set a sessionId and sessionCreated date on the current instance
+  signalsInstance.setInstanceProps({ sessionId, sessionCreated });
 
-// Example of module method
-module.onMethod('someMethod', async (payload) => {
-  console.log('Received method call', payload);
-  return 'hello there';
-})
+  // get current instance properties
+  const instanceProps = signalsInstance.getInstanceProps();
 
-// In this example we send TestModule.Event message every second
-let seq = 0;
-setInterval(() => {
-  module.broadcast('MyModule.Event', { some: 'data', seq });
-  seq += 1;
-}, 1000);
+  // manually send session
+  const resSession = await signals.sendRawSession({
+    sessionId: instanceProps.sessionId,
+    sessionCreated: new Date().toISOString(), // or sessionCreated
+    tenantId: instanceProps.tenantId,
+    environment: instanceProps.environment,
+    dataResidency: instanceProps.dataResidency,
+    country: instanceProps.country,
+    spaceId: instanceProps.spaceId,
+    appId: instanceProps.appId,
+    appVersion: instanceProps.appVersion,
+    installationId: instanceProps.installationId,
+    installationVersion: instanceProps.installationVersion,
+    deviceId: instanceProps.deviceId,
+    clientId: instanceProps.clientId,
+  });
+  
+  console.log('resSession:', resSession);
+  // output:  { status: 200, statusText: 'OK', ...}
 
-// Example of an event coming from app or another module
-module.subscribe('Test.Event', async (data) => {
-  console.log('Received event', data);
-});
+  // Caching of sessions, events and timestamps will handled by sesame edge app
+  // Manually send event
+  // APP_START eventType is the standard event to capture the application level start event
+  const resEvent = await signals.sendRawEvent({
+    tenantId: instanceProps.tenantId,
+    spaceId: instanceProps.spaceId,
+    eventTime: new Date().toISOString(),
+    dataResidency: instanceProps.dataResidency,
+    sessionId: instanceProps.sessionId,
+    clientId: instanceProps.clientId,
+    eventType: 'APP_START',
+    interaction: false,
+    int1: 1,
+    int2: 1,
+    str1: 'abc',
+    str2: 'def',
+    // add more
+  });
+
+  console.log('resEvent:', resEvent);
+  // output:  { status: 200, statusText: 'OK', ...}
+};
+
+await signalsExample();

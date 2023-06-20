@@ -174,24 +174,39 @@
     node-fetch "^2.6.1"
     ws "^7.4.5"
 
-"@ombori/ga-module@^3.20.2":
-  version "3.22.2"
-  resolved "https://registry.yarnpkg.com/@ombori/ga-module/-/ga-module-3.22.2.tgz#7188529cd0fe9c96a110bc7eb5c57063725a53fe"
-  integrity sha512-+PjLkbP5etNCw2Fx84jGKdDMOI3z/z+Vn9IPIHfBY3YC2MYReDYnDjki1nw6tm5vOOdo7+QGssSCUfo4HuYvyg==
+"@ombori/ga-module@3.48.2":
+  version "3.48.2"
+  resolved "https://registry.yarnpkg.com/@ombori/ga-module/-/ga-module-3.48.2.tgz#c66703c06a3cdf27906c23a2064503a190898726"
+  integrity sha512-uIkp/StuBQnlE/Cn71ryfwspAREdTkrIz/A2ZINiLMyarDlkvNRK8wn0VNFIKXT2eNLvN9BZjVWvNFmutTqaCA==
   dependencies:
-    "@ombori/grid-signals" "3.22.2"
+    "@ombori/grid-signals" "3.48.0"
     azure-iot-device-mqtt "^1.15.3"
     azure-iothub "^1.14.6"
     websocket-stream "^5.5.2"
 
-"@ombori/grid-signals@3.22.2":
-  version "3.22.2"
-  resolved "https://registry.yarnpkg.com/@ombori/grid-signals/-/grid-signals-3.22.2.tgz#f9d3a4dd19575f76f448e62bd97463eb1c5085c8"
-  integrity sha512-hyuOVXQaf6hQ1Uefo+HtUoBUD9166PkK3doASPyq70o0ll4/f7pnCww1kDtxWcFTSaQrH03FxtMZ02caZoBbjA==
+"@ombori/grid-signals@3.48.0":
+  version "3.48.0"
+  resolved "https://registry.yarnpkg.com/@ombori/grid-signals/-/grid-signals-3.48.0.tgz#30396777384dd60b93c984686caca6b45005216f"
+  integrity sha512-G/8A8qzZ1jVpECOhalEop72jaO7IRrwlNHa1UgTvDHKj8AssXDZonSOS3E6kVx2ivFwZjWjQYyD+ogClrP306g==
   dependencies:
     "@microsoft/signalr" "^6.0.0"
+    axios "0.21.1"
     buffer "^6.0.3"
-    isomorphic-fetch "^3.0.0"
+    lodash "^4.17.21"
+    lodash.isnil "^4.0.0"
+    lodash.omitby "^4.6.0"
+    lodash.once "^4.1.1"
+    rimraf "^3.0.2"
+    uuid "^8.3.2"
+
+"@ombori/grid-signals@^3.48.1":
+  version "3.48.1"
+  resolved "https://registry.yarnpkg.com/@ombori/grid-signals/-/grid-signals-3.48.1.tgz#a43b919780ec599b1c0ef996c80547ffe80fd897"
+  integrity sha512-8OvwDe4v5cCcByz1zBus8U7TLtoL1Cc8jD4x1i3MYAa4PHNA2m/6l0iNaok1X9aHhbA9YshzFg2823H82jq7SQ==
+  dependencies:
+    "@microsoft/signalr" "^6.0.0"
+    axios "0.21.1"
+    buffer "^6.0.3"
     lodash "^4.17.21"
     lodash.isnil "^4.0.0"
     lodash.omitby "^4.6.0"
@@ -311,6 +326,13 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
+
+axios@0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 axios@^0.21.1:
   version "0.21.4"
@@ -662,6 +684,11 @@ fetch-cookie@^0.11.0:
   dependencies:
     tough-cookie "^2.3.3 || ^3.0.1 || ^4.0.0"
 
+follow-redirects@^1.10.0:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
+  integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
+
 follow-redirects@^1.14.0:
   version "1.14.9"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.9.tgz#dd4ea157de7bfaf9ea9b3fbd85aa16951f78d8d7"
@@ -910,14 +937,6 @@ isarray@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
-
-isomorphic-fetch@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-3.0.0.tgz#0267b005049046d2421207215d45d6a262b8b8b4"
-  integrity sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==
-  dependencies:
-    node-fetch "^2.6.1"
-    whatwg-fetch "^3.4.1"
 
 json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
@@ -1694,11 +1713,6 @@ websocket-stream@^5.5.2:
     safe-buffer "^5.1.2"
     ws "^3.2.0"
     xtend "^4.0.0"
-
-whatwg-fetch@^3.4.1:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
-  integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
 
 whatwg-url@^5.0.0:
   version "5.0.0"
